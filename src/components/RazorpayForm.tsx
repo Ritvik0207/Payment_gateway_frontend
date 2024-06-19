@@ -9,7 +9,7 @@ const RazorpayForm = ({ job }) => {
 
     const handleRazorpayPayment = async () => {
         try {
-            const orderUrl = "http://51.20.106.102:9000/api/payment/orders";
+            const orderUrl = "http://51.20.37.103:9000/api/payment/orders";
             //replace the orderurl with your server endpoint
             const { data } = await axios.post(orderUrl, { amount: job.price, userId: "123456" });
             const options = {
@@ -22,10 +22,10 @@ const RazorpayForm = ({ job }) => {
                 order_id: data.data.id,
                 handler: async (response) => {
                     try {
-                        const verifyUrl = "http://51.20.106.102:9000/api/payment/verify";
+                        const verifyUrl = "http://51.20.37.103:9000/api/payment/verify";
                         //replace the url with your server endpoint
                         const { data } = await axios.post(verifyUrl, response);
-                        console.log(data);
+                        console.log(data); 
                     } catch (error) {
                         console.log(error);
                     }
@@ -52,7 +52,7 @@ const RazorpayForm = ({ job }) => {
         <div>
             {error && <div className={styles.error}>{error}</div>}
             <button onClick={handleRazorpayPayment} disabled={jobs.price <= 0} className={styles.button}>
-                Pay <span>&#x20B9; {jobs.price}</span> with Razorpay
+                Pay   with Razorpay
             </button>
         </div>
     );

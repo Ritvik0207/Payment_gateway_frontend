@@ -19,7 +19,7 @@ const CheckoutForm = ({ job }) => {
 
         try {
             //replace the url with your server endpoint
-            const response = await axios.post('http://51.20.106.102:9000/api/payment/create-checkout-session', {
+            const response = await axios.post('http://51.20.37.103:9000/api/payment/create-checkout-session', {
                 userId: "123456",
                 name: job.name,
                 amount: job.price
